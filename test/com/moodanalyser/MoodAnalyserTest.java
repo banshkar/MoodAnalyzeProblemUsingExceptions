@@ -4,15 +4,13 @@ import static org.testng.Assert.*;
 public class MoodAnalyserTest {
     @Test
     public void givenMessage_WhenSad_ShouldReturnSad(){
-        MoodAnalyser moodAnalyser = new MoodAnalyser();
-        String mood =moodAnalyser.analyseMood("i am sad mood");
-        assertEquals("SAD",mood);
+        try {
+            MoodAnalyser moodAnalyser = new MoodAnalyser("i am sad mood");
+            String mood =moodAnalyser.analyserMood();
+            assertEquals("SAD",mood);
+        }
+       catch (Exception e){
+           System.out.println(e);
+       }
     }
-    @Test
-    public void givenMessage_WhenHappy_ShouldReturnHappy(){
-        MoodAnalyser moodAnalyser = new MoodAnalyser();
-        String mood =moodAnalyser.analyseMood("i am happy mood");
-        assertEquals("HAPPY",mood);
-    }
-
 }
