@@ -1,7 +1,7 @@
 package com.moodanalyser;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
-public class MoodAnalyserTest {
+public class MoodAnalyserTest<ExceptedException> {
     @Test
     public void givenMessage_WhenSad_ShouldReturnSad(){
         try {
@@ -25,9 +25,14 @@ public class MoodAnalyserTest {
         }
     }
     @Test
-    public void givenNull_WhenHappy_ShouldReturnHappy(){
+    public  void givenNull_WhenHappy_ShouldReturnHappy(){
             MoodAnalyser moodAnalyser = new MoodAnalyser(null);
-            String mood =moodAnalyser.analyserMood();
-            assertEquals("HAPPY",mood);
+            String mood =null;
+            try {
+                mood=moodAnalyser.analyserMoodAgain();
+                assertEquals("HAPPY",mood);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
     }
 }
